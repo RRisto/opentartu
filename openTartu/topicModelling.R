@@ -21,7 +21,7 @@ dtm <- DocumentTermMatrix(docs)
 library(corpustools) 
 set.seed(1)  
 #Hitler
-lda = lda.fit(dtm, K=3, alpha=.3)
+lda = lda.fit(dtm, K=3, alpha=.2)
 #run it once, helps to make separate folder for vis to upload it to the web
 # invisible(lapply(
 #   file.path("https://raw.githubusercontent.com/trinker/topicmodels_learning/master/functions",
@@ -32,8 +32,9 @@ lda %>%
   topicmodels2LDAvis() %>%
   LDAvis::serVis(out.dir = './visualisations/ldavis', open.browser = F)
 
+as.data.frame(terms(lda,10))
 
-topics=c("Detailplaneering","loa andmine","linnavolikogu")
+topics=c("Loa andmine","Detailplaneering","Linnavolikogu töö")
 #plotime ajalise jagunemise
 library(reshape2) 
 library(ggplot2)
